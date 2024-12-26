@@ -10,6 +10,7 @@ export const ScheduleTable = () => {
   const selectedGroupName = useScheduleStore(state => state.selectedGroupName)
   const setSelectedWeek = useScheduleStore(state => state.setSelectedWeek)
   const selectedWeek = useScheduleStore(state => state.selectedWeek)
+  const setTimeSlots = useScheduleStore(state => state.setTimeSlots)
 
   const { isSuccess: isGroupsSuccess } = useGroups()
 
@@ -30,10 +31,19 @@ export const ScheduleTable = () => {
   }, [schedule, selectedWeek])
 
   useEffect(() => {
-    if (schedule?.table && selectedWeek === -1) {
-      setSelectedWeek(schedule.table.week)
+    if (schedule?.table) {
+      setTimeSlots(scheduleItems?.timeSlots || [])
+      if (selectedWeek === -1) {
+        setSelectedWeek(schedule.table.week)
+      }
     }
-  }, [schedule, selectedWeek, setSelectedWeek])
+  }, [
+    schedule,
+    scheduleItems?.timeSlots,
+    selectedWeek,
+    setSelectedWeek,
+    setTimeSlots,
+  ])
 
   return (
     <div className='mx-auto px-4 max-w-screen-xl mt-4 space-y-4 text-sm'>

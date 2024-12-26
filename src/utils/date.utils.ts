@@ -44,8 +44,8 @@ export const isNow = (timeStr: string) => {
 
   const [start, end] = timeStr.split('-')
 
-  const nowMinutes = timeToMinutes(now)
   const startMinutes = timeToMinutes(start)
+  const nowMinutes = timeToMinutes(now)
   const endMinutes = timeToMinutes(end)
 
   return nowMinutes >= startMinutes && nowMinutes <= endMinutes

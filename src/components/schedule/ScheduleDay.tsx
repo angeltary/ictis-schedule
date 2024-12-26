@@ -27,11 +27,11 @@ export const ScheduleDay = ({ day }: Props) => {
 
       {day.lessons.map((lesson, index) => (
         <ScheduleCell
-          key={day.lessons.indexOf(lesson)}
+          key={index}
           type={lesson.type}
           styles={
-            isNow(timeSlots[index]) && isToday(day.date) && lesson.type !== ''
-              ? 'bg-violet-400'
+            isToday(day.date) && isNow(timeSlots[index]) && lesson.type
+              ? 'bg-rose-400'
               : ''
           }
         >
