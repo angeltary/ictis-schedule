@@ -2,23 +2,23 @@ import { useQuery } from '@tanstack/react-query'
 import { useEffect, useMemo } from 'react'
 import { scheduleService } from '../../services/schedule.service'
 import { useScheduleStore } from '../../stores/schedule.store'
-import { useGroups } from '../search-bar/useGroups'
+import { useResults } from '../search-bar/useResults'
 import { ScheduleCell } from './ScheduleCell'
 import { ScheduleDay } from './ScheduleDay'
 
 export const ScheduleTable = () => {
-  const selectedGroupName = useScheduleStore(state => state.selectedGroupName)
+  const selectedResultName = useScheduleStore(state => state.selectedResultName)
   const setSelectedWeek = useScheduleStore(state => state.setSelectedWeek)
   const selectedWeek = useScheduleStore(state => state.selectedWeek)
   const setTimeSlots = useScheduleStore(state => state.setTimeSlots)
 
-  const { isSuccess: isGroupsSuccess } = useGroups()
+  const { isSuccess: isResultsSuccess } = useResults()
 
   const { data: schedule } = useQuery({
-    queryKey: ['schedule', selectedGroupName, selectedWeek],
+    queryKey: ['schedule', selectedResultName, selectedWeek],
     queryFn: async () =>
-      await scheduleService.getSchedule(selectedGroupName, selectedWeek),
-    enabled: isGroupsSuccess,
+      await scheduleService.getSchedule(selectedResultName, selectedWeek),
+    enabled: isResultsSuccess,
     placeholderData: prev => prev,
     staleTime: 1000 * 60 * 60,
   })
@@ -48,12 +48,12 @@ export const ScheduleTable = () => {
   return (
     <div className='mx-auto px-4 max-w-screen-xl mt-4 space-y-4 text-sm'>
       {/* Название группы и выбранная неделя */}
-      {selectedGroupName && selectedWeek !== -1 && (
+      {selectedResultName && selectedWeek !== -1 && (
         <div className='flex flex-col sm:flex-row gap-2 justify-center font-bold text-2xl sm:text-4xl text-center'>
           <>
             Расписание для
             <span className='bg-gray-200 px-2 pb-1 rounded-xl'>
-              {selectedGroupName}
+              {selectedResultName}
             </span>
           </>
 
@@ -66,7 +66,7 @@ export const ScheduleTable = () => {
         </div>
       )}
 
-      {selectedGroupName && scheduleItems && (
+      {selectedResultName && scheduleItems && (
         <>
           {/* Недели */}
           <div className='overflow-x-auto -mx-4 px-4'>

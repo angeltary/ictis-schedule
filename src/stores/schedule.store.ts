@@ -2,30 +2,31 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 interface IScheduleStore {
-  selectedGroupName: string
+  selectedResultName: string
   selectedWeek: number
   timeSlots: string[]
-  setSelectedGroupName: (item: string) => void
+  setselectedResultName: (item: string) => void
   setSelectedWeek: (week: number) => void
   setTimeSlots: (slots: string[]) => void
-  removeSelectedGroupName: () => void
+  removeselectedResultName: () => void
 }
 
 export const useScheduleStore = create<IScheduleStore>()(
   persist(
     set => ({
-      selectedGroupName: '',
+      selectedResultName: '',
       selectedWeek: -1,
       timeSlots: [],
-      setSelectedGroupName: (item: string) => set({ selectedGroupName: item }),
+      setselectedResultName: (item: string) =>
+        set({ selectedResultName: item }),
       setSelectedWeek: (week: number) => set({ selectedWeek: week }),
       setTimeSlots: (slots: string[]) => set({ timeSlots: slots }),
-      removeSelectedGroupName: () => set({ selectedGroupName: '' }),
+      removeselectedResultName: () => set({ selectedResultName: '' }),
     }),
     {
       name: 'schedule-storage',
       partialize: state => ({
-        selectedGroupName: state.selectedGroupName,
+        selectedResultName: state.selectedResultName,
       }),
     },
   ),

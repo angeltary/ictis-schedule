@@ -1,4 +1,4 @@
-export interface GroupsResponseDto {
+export interface ResultsDto {
   choices: {
     name: string
     id: string

@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { useGroups } from './useGroups'
+import { useResults } from './useResults'
 
 export const useSearch = () => {
   const [search, setSearch] = useState('')
-  const { data: groups } = useGroups()
+  const { data: results } = useResults()
 
   // TODO: почему тут через сет удаляются дубликаты, а в сервисе нет?
   const filteredItems =
-    search && groups
+    search && results
       ? [
           ...new Set(
-            groups
-              .map(group => group.name)
+            results
+              .map(result => result.name)
               .filter(name =>
                 name.toLowerCase().includes(search.toLowerCase()),
               ),

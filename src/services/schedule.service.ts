@@ -1,28 +1,28 @@
 import axios from 'axios'
 import { API_URL } from '../config/api.config'
-import { ScheduleResponseDto } from '../dto/schedule.dto'
+import { ScheduleDto } from '../dto/schedule.dto'
 import { ISchedule } from '../types/schedule.types'
 import { parseLessonType } from '../utils/lesson.utils'
-import { groupsService } from './groups.service'
+import { resultsService } from './results.service'
 
 class ScheduleService {
-  async getSchedule(query: string, week: number): Promise<ScheduleResponseDto> {
-    const groupId = await groupsService.getGroupId(query)
+  async getSchedule(query: string, week: number): Promise<ScheduleDto> {
+    const resultId = await resultsService.getResultId(query)
 
-    if (!groupId) {
+    if (!resultId) {
       throw new Error(`Группа не найдена: ${query}`)
     }
 
-    let url = `${API_URL}/?group=${groupId}`
+    let url = `${API_URL}/?group=${resultId}`
     if (week !== -1) {
       url += `&week=${week}`
     }
 
-    const { data } = await axios.get<ScheduleResponseDto>(url)
+    const { data } = await axios.get<ScheduleDto>(url)
     return data
   }
 
-  parseScheduleData(schedule: ScheduleResponseDto): ISchedule {
+  parseScheduleData(schedule: ScheduleDto): ISchedule {
     const tableData = schedule.table.table
 
     const lessonNumbers = tableData[0].slice(1)

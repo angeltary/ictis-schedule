@@ -1,4 +1,4 @@
-export interface ScheduleResponseDto {
+export interface ScheduleDto {
   table: {
     type: string
     name: string

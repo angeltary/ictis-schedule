@@ -5,8 +5,8 @@ import { useSearch } from './useSearch'
 export const SearchBar = () => {
   const { search, setSearch, filteredItems } = useSearch()
 
-  const setSelectedGroupName = useScheduleStore(
-    state => state.setSelectedGroupName,
+  const setselectedResultName = useScheduleStore(
+    state => state.setselectedResultName,
   )
 
   return (
@@ -26,7 +26,7 @@ export const SearchBar = () => {
           }}
           onKeyDown={e => {
             if (e.key === 'Enter' && filteredItems.length > 0) {
-              setSelectedGroupName(filteredItems[0])
+              setselectedResultName(filteredItems[0])
               setSearch('')
             }
           }}
@@ -39,7 +39,7 @@ export const SearchBar = () => {
             <li
               key={item}
               onClick={() => {
-                setSelectedGroupName(item)
+                setselectedResultName(item)
                 setSearch('')
               }}
               className='mb-2.5 py-2.5 px-4 cursor-pointer bg-gray-100 hover:bg-gray-200 shadow-sm transition rounded-md'
