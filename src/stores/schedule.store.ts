@@ -5,10 +5,10 @@ interface IScheduleStore {
   selectedResultName: string
   selectedWeek: number
   timeSlots: string[]
-  setselectedResultName: (item: string) => void
+  setSelectedResultName: (item: string) => void
   setSelectedWeek: (week: number) => void
   setTimeSlots: (slots: string[]) => void
-  removeselectedResultName: () => void
+  removeSelectedResultName: () => void
 }
 
 export const useScheduleStore = create<IScheduleStore>()(
@@ -17,11 +17,11 @@ export const useScheduleStore = create<IScheduleStore>()(
       selectedResultName: '',
       selectedWeek: -1,
       timeSlots: [],
-      setselectedResultName: (item: string) =>
+      setSelectedResultName: (item: string) =>
         set({ selectedResultName: item }),
       setSelectedWeek: (week: number) => set({ selectedWeek: week }),
       setTimeSlots: (slots: string[]) => set({ timeSlots: slots }),
-      removeselectedResultName: () => set({ selectedResultName: '' }),
+      removeSelectedResultName: () => set({ selectedResultName: '' }),
     }),
     {
       name: 'schedule-storage',
