@@ -5,15 +5,18 @@ import { IGroup } from '../types/groups.types'
 
 class GroupsService {
   private groups: Map<string, string> = new Map()
-  private getGroupsUrl = `${API_URL}/?query=${encodeURIComponent('КТ')}`
+  private getGroupsUrl = `${API_URL}/?query=${encodeURIComponent('.')}`
 
   async getGroups(): Promise<IGroup[]> {
     if (this.groups.size === 0) {
       const { data } = await axios.get<GroupsResponseDto>(this.getGroupsUrl)
       const parsedGroups = this.parseGroupsData(data)
       parsedGroups.forEach(group => {
-        this.groups.set(group.name, group.id)
+        if (!this.groups.has(group.name) && !this.groups.has(group.id)) {
+          this.groups.set(group.name, group.id)
+        }
       })
+
       return parsedGroups
     }
 
@@ -32,6 +35,11 @@ class GroupsService {
 
   getGroupId(name: string): string | undefined {
     return this.groups.get(name)
+  }
+
+  async findGroupsContaining(search: string): Promise<IGroup[]> {
+    const allGroups = await this.getGroups()
+    return allGroups.filter(group => group.name.includes(search))
   }
 }
 

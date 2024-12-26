@@ -33,20 +33,22 @@ export const SearchBar = () => {
         />
       </div>
 
-      <ul className='rounded-md'>
-        {filteredItems.slice(0, 4).map(item => (
-          <li
-            key={item}
-            onClick={() => {
-              setSelectedGroupName(item)
-              setSearch('')
-            }}
-            className='mb-2.5 py-2.5 px-4 cursor-pointer bg-gray-100 hover:bg-gray-200 shadow-sm transition rounded-md'
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      {filteredItems.length > 0 && (
+        <ul className='rounded-md'>
+          {filteredItems.map(item => (
+            <li
+              key={item}
+              onClick={() => {
+                setSelectedGroupName(item)
+                setSearch('')
+              }}
+              className='mb-2.5 py-2.5 px-4 cursor-pointer bg-gray-100 hover:bg-gray-200 shadow-sm transition rounded-md'
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

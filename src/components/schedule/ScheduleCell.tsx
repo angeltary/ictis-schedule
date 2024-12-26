@@ -16,7 +16,7 @@ export const ScheduleCell = ({ children, type, styles }: Props) => {
         text-center 
         justify-center
         text-xs sm:text-sm
-        ${type ? getLessonTypeStyle(type) : 'bg-gray-100'}
+        ${type && !styles ? getLessonTypeStyle(type) : 'bg-gray-100'}
         ${styles}
       `}
     >

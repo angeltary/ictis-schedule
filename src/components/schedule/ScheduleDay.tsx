@@ -31,7 +31,7 @@ export const ScheduleDay = ({ day }: Props) => {
           type={lesson.type}
           styles={
             isToday(day.date) && isNow(timeSlots[index]) && lesson.type
-              ? 'bg-rose-400'
+              ? 'bg-violet-300'
               : ''
           }
         >
