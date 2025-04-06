@@ -22,12 +22,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${rubik.className} antialiased`}>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='light'
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute='class' defaultTheme='light'>
           <TanstackQueryProvider>{children}</TanstackQueryProvider>
         </ThemeProvider>
       </body>
