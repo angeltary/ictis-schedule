@@ -1,7 +1,12 @@
 'use client'
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useState } from 'react'
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
+import { QueryClient } from '@tanstack/react-query'
+import {
+  Persister,
+  PersistQueryClientProvider,
+} from '@tanstack/react-query-persist-client'
+import { useEffect, useState } from 'react'
 
 export function TanstackQueryProvider({
   children,
@@ -12,6 +17,7 @@ export function TanstackQueryProvider({
     new QueryClient({
       defaultOptions: {
         queries: {
+          staleTime: Infinity,
           refetchInterval: false,
           refetchOnWindowFocus: false,
           refetchOnReconnect: false,
@@ -21,5 +27,32 @@ export function TanstackQueryProvider({
     }),
   )
 
-  return <QueryClientProvider client={client}>{children}</QueryClientProvider>
+  const [persister, setPersister] = useState<Persister | null>(null)
+
+  useEffect(() => {
+    setPersister(
+      createSyncStoragePersister({
+        storage: window.localStorage,
+      }),
+    )
+  }, [])
+
+  if (!persister) {
+    return
+  }
+
+  return (
+    <PersistQueryClientProvider
+      client={client}
+      persistOptions={{
+        persister,
+        dehydrateOptions: {
+          shouldDehydrateQuery: query =>
+            query.state.status === 'success' && !!query.meta?.persist,
+        },
+      }}
+    >
+      {children}
+    </PersistQueryClientProvider>
+  )
 }

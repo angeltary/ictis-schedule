@@ -14,5 +14,6 @@ export const useSchedule = (group: string, week?: string) => {
 
       return getSchedule(group)
     },
+    meta: { persist: true },
   })
 }
