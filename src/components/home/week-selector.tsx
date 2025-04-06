@@ -36,9 +36,9 @@ export default function WeekSelector() {
               key={week}
               onClick={() => setSelectedWeek(week)}
               className={cn(
-                'w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer border-black border-1 hover:bg-stone-100',
+                'w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer border border-primary hover:bg-accent',
                 week === selectedWeek &&
-                  'hover:bg-black/85 bg-black text-white',
+                  'hover:bg-primary bg-primary text-primary-foreground border-none',
               )}
             >
               {week}
