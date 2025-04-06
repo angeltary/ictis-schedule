@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`${rubik.className} antialiased`}>
         <ThemeProvider
           attribute='class'
-          defaultTheme='system'
+          defaultTheme='light'
           enableSystem
           disableTransitionOnChange
         >
