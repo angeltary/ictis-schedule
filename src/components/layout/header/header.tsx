@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import ThemeSwitch from '@/components/layout/header/theme-switcher'
+import ThemeSwitcher from '@/components/layout/header/theme-switcher'
 import Link from 'next/link'
 
 export default function Header() {
@@ -21,7 +21,7 @@ export default function Header() {
         </div>
 
         <div className='flex items-center gap-1'>
-          <ThemeSwitch />
+          <ThemeSwitcher />
 
           <Link
             href='https://github.com/angeltary/ictis-schedule'
