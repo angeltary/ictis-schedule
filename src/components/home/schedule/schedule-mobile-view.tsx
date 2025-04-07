@@ -44,10 +44,11 @@ export default function ScheduleMobileView({
                   key={index}
                   className='border-b pb-2 last:border-b-0 last:pb-0'
                 >
-                  <div className='font-medium text-sm text-muted-foreground'>
-                    {headers[1][index + 1]}
+                  <div className='flex justify-between gap-2 font-medium text-sm text-muted-foreground'>
+                    <div>{headers[1][index + 1]}</div>
+                    <div>{index + 1}-ая пара</div>
                   </div>
-                  <div className='mt-1'>{item || '—'}</div>
+                  <div className='mt-1'>{item || '-'}</div>
                 </div>
               ))}
             </div>
