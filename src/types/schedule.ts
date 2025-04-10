@@ -3,6 +3,6 @@ export interface ScheduleTable {
   name: string
   week: number
   group: string
-  table: string[]
+  table: string[][]
   link: string
 }

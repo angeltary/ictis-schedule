@@ -2,6 +2,7 @@
 
 import { ChevronDown } from 'lucide-react'
 
+import LessonInfo from '@/components/schedule/lesson-info'
 import { getFormattedDate } from '@/lib/utils/get-formatted-date'
 import { cn } from '@/lib/utils/tailwind-merge'
 
@@ -19,11 +20,11 @@ export default function ScheduleMobileView({
   toggleCard,
 }: Props) {
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 pb-2'>
       {scheduleData.map((item, index) => (
         <div
           key={index}
-          className='overflow-hidden rounded-lg border shadow-sm'
+          className='overflow-hidden rounded-lg shadow-sm border'
         >
           <div
             className='bg-muted/30 flex cursor-pointer items-center justify-between p-4'
@@ -47,7 +48,7 @@ export default function ScheduleMobileView({
                 >
                   <div className='text-muted-foreground flex justify-between gap-2 text-sm font-medium'>
                     <div>{headers[1][index + 1]}</div>
-                    <div>{index + 1}-ая пара</div>
+                    <LessonInfo lesson={item} />
                   </div>
                   <div className='mt-1'>{item || '-'}</div>
                 </div>
