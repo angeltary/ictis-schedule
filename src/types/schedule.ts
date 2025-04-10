@@ -1,10 +1,8 @@
-export type ScheduleRow = string[]
-
-export type ScheduleTable = {
+export interface ScheduleTable {
   type: string
   name: string
   week: number
   group: string
-  table: ScheduleRow[]
+  table: string[]
   link: string
 }

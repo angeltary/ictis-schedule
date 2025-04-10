@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-type Store = {
+interface Store {
   selectedItem: string
   setSelectedItem: (selectedItem: string) => void
 }

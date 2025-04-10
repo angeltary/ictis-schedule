@@ -1,24 +1,25 @@
 'use client'
 
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
+
 import { getFormattedDate } from '@/lib/utils/get-formatted-date'
 import { cn } from '@/lib/utils/tailwind-merge'
 
-type Props = {
+interface Props {
   headers: string[][]
   scheduleData: string[][]
 }
 
 export default function ScheduleDesktopView({ headers, scheduleData }: Props) {
   return (
-    <Table className='border-collapse w-full table-fixed'>
+    <Table className='w-full table-fixed border-collapse'>
       <TableBody>
         <TableRow>
           {headers[0].map((item, index) => (
             <TableCell
               key={index}
               className={cn(
-                'border text-center hover:bg-muted/50 transition-colors break-words',
+                'hover:bg-muted/50 border text-center break-words transition-colors',
                 index === 0 && 'font-bold',
               )}
             >
@@ -32,7 +33,7 @@ export default function ScheduleDesktopView({ headers, scheduleData }: Props) {
             <TableCell
               key={index}
               className={cn(
-                'border text-center hover:bg-muted/50 transition-colors break-words',
+                'hover:bg-muted/50 border text-center break-words transition-colors',
                 index === 0 && 'font-bold',
               )}
             >
@@ -47,7 +48,7 @@ export default function ScheduleDesktopView({ headers, scheduleData }: Props) {
               <TableCell
                 key={index}
                 className={cn(
-                  'border text-center whitespace-normal py-4 hover:bg-muted/50 transition-colors break-words',
+                  'hover:bg-muted/50 border py-4 text-center break-words whitespace-normal transition-colors',
                   index === 0 && 'font-bold',
                 )}
               >

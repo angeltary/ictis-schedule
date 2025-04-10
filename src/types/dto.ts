@@ -1,6 +1,6 @@
 import { ScheduleTable } from './schedule'
 
-export type Items = {
+export interface Items {
   choices: {
     name: string
     id: string
@@ -8,7 +8,7 @@ export type Items = {
   }[]
 }
 
-export type Schedule = {
+export interface Schedule {
   table: ScheduleTable
   weeks: number[]
 }

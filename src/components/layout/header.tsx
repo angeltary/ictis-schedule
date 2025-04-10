@@ -1,6 +1,5 @@
+import HeaderActions from '@/components/layout/header-actions'
 import Image from 'next/image'
-
-import ThemeSwitcher from '@/components/layout/header/theme-switcher'
 import Link from 'next/link'
 
 export default function Header() {
@@ -21,22 +20,7 @@ export default function Header() {
         </div>
 
         <div className='flex items-center gap-1'>
-          <ThemeSwitcher />
-
-          <Link
-            href='https://github.com/angeltary/ictis-schedule'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='p-[10px] rounded-md hover:bg-accent transition-colors'
-          >
-            <Image
-              src='/github.svg'
-              alt='GitHub'
-              width={18}
-              height={18}
-              className='dark:invert'
-            />
-          </Link>
+          <HeaderActions />
         </div>
       </div>
     </header>

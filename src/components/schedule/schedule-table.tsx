@@ -1,10 +1,13 @@
 'use client'
 
-import ScheduleDesktopView from '@/components/home/schedule/schedule-desktop-view'
-import ScheduleMobileView from '@/components/home/schedule/schedule-mobile-view'
-import { useSchedule } from '@/hooks/use-schedule'
-import { useWeeksStore } from '@/stores/weeks-store'
 import { useEffect, useState } from 'react'
+
+import ScheduleDesktopView from '@/components/schedule/schedule-desktop-view'
+import ScheduleMobileView from '@/components/schedule/schedule-mobile-view'
+
+import { useSchedule } from '@/hooks/use-schedule'
+
+import { useWeeksStore } from '@/stores/weeks-store'
 
 export default function ScheduleTable({ group }: { group: string }) {
   const { selectedWeek, setSelectedWeek, setWeeks } = useWeeksStore()
@@ -31,7 +34,7 @@ export default function ScheduleTable({ group }: { group: string }) {
   }
 
   if (isLoading) {
-    return <div className='text-center p-2'>Загрузка расписания...</div>
+    return <div className='p-2 text-center'>Загрузка расписания...</div>
   }
 
   if (isError || !schedule) {
@@ -42,7 +45,7 @@ export default function ScheduleTable({ group }: { group: string }) {
   const scheduleData = schedule.table.table.slice(2)
 
   return (
-    <div className='w-full overflow-auto mb-[100px]'>
+    <div className='mb-[100px] w-full overflow-auto'>
       <div className='lg:hidden'>
         <ScheduleMobileView
           headers={headers}
@@ -52,7 +55,7 @@ export default function ScheduleTable({ group }: { group: string }) {
         />
       </div>
 
-      <div className='hidden lg:block shadow-sm'>
+      <div className='hidden shadow-sm lg:block'>
         <ScheduleDesktopView headers={headers} scheduleData={scheduleData} />
       </div>
     </div>

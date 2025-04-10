@@ -3,7 +3,7 @@
 import { useSelectedItemStore } from '@/stores/selected-item-store'
 import { useWeeksStore } from '@/stores/weeks-store'
 
-export default function SelectedInfo() {
+export default function InfoCard() {
   const { selectedItem } = useSelectedItemStore()
   const { selectedWeek } = useWeeksStore()
 
@@ -12,7 +12,7 @@ export default function SelectedInfo() {
   }
 
   return (
-    <div className='flex flex-col font-bold items-center justify-center gap-1 mb-2'>
+    <div className='mb-2 flex flex-col items-center justify-center gap-1 font-bold'>
       <div className='text-4xl'>{selectedItem}</div>
       <div className='text-2xl'>Неделя: {selectedWeek}</div>
     </div>
