@@ -1,4 +1,4 @@
-export const parseAuditorium = (lesson: string) => {
+export const parseAuditoriums = (lesson: string) => {
   const regex = /(?:^|[^\wа-яА-Я])([ГДИЕКАБ])[\s-](\d+)/g
 
   const matches = [...lesson.matchAll(regex)]
