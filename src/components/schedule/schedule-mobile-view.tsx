@@ -27,7 +27,7 @@ export default function ScheduleMobileView({
           className='overflow-hidden rounded-lg shadow-sm border'
         >
           <div
-            className='bg-muted/30 flex cursor-pointer items-center justify-between p-4'
+            className='bg-muted/50 dark:bg-muted/20 flex cursor-pointer items-center justify-between p-4'
             onClick={() => toggleCard(index)}
           >
             <div className='font-bold'>{getFormattedDate(item[0])}</div>

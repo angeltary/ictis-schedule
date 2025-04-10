@@ -17,7 +17,7 @@ export const useWeeksStore = create<Store>()(
       setWeeks: (weeks: string[]) => set({ weeks }),
     }),
     {
-      name: 'selected-week-storage',
+      name: 'weeks-storage',
     },
   ),
 )
