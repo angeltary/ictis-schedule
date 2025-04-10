@@ -20,7 +20,7 @@ export function LessonCard({ day, time, lesson }: Props) {
       <div className='my-1'>{lesson || '-'}</div>
 
       {isLessonToday(day) && isCurrent && (
-        <div className='w-full rounded-full bg-progress-bar'>
+        <div className='w-full rounded-full bg-progress-bar dark:bg-muted/50'>
           <div
             className='h-1.5 rounded-full bg-primary'
             style={{ width: `${progress}%` }}
