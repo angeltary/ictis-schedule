@@ -2,7 +2,11 @@ import { getLessonType } from '@/lib/utils/get-lesson-type'
 import { parseAuditoriums } from '@/lib/utils/parse-auditoriums'
 import { BookOpenText, Globe, Pencil } from 'lucide-react'
 
-export default function LessonInfo(lesson: string) {
+interface Props {
+  lesson: string
+}
+
+export default function LessonInfo({ lesson }: Props) {
   const lessonType = getLessonType(lesson)
 
   if (lessonType === 'нет') {
