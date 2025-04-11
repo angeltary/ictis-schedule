@@ -1,10 +1,9 @@
 'use client'
 
-import { ChevronDown } from 'lucide-react'
-
 import { LessonCard } from '@/components/lesson/lesson-card'
 import { getFormattedDate } from '@/lib/utils/get-formatted-date'
 import { cn } from '@/lib/utils/tailwind-merge'
+import { ChevronDown } from 'lucide-react'
 
 interface Props {
   headers: string[][]

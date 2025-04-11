@@ -1,8 +1,7 @@
-import type { Metadata } from 'next'
-import { Rubik } from 'next/font/google'
-
 import { TanstackQueryProvider } from '@/components/providers/tanstack-query-provider'
 import { ThemeProvider } from '@/components/providers/theme-provider'
+import type { Metadata } from 'next'
+import { Rubik } from 'next/font/google'
 
 import '@/styles/globals.css'
 

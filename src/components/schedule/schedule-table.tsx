@@ -1,13 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import ScheduleDesktopView from '@/components/schedule/schedule-desktop-view'
 import ScheduleMobileView from '@/components/schedule/schedule-mobile-view'
-
 import { useSchedule } from '@/hooks/use-schedule'
-
 import { useWeeksStore } from '@/stores/weeks-store'
+import { useEffect, useState } from 'react'
 
 export default function ScheduleTable({ group }: { group: string }) {
   const { selectedWeek, setSelectedWeek, setWeeks } = useWeeksStore()

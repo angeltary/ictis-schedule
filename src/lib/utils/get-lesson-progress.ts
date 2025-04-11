@@ -17,8 +17,7 @@ export const getLessonProgress = (time: string): LessonProgress => {
   const total = end - start
 
   const now = new Date()
-  const current =
-    now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()
+  const current = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds()
 
   const isCurrent = current >= start && current <= end
 
