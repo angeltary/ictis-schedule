@@ -2,33 +2,39 @@ import { getLessonType } from '@/lib/utils/get-lesson-type'
 import { parseAuditoriums } from '@/lib/utils/parse-auditoriums'
 import { BookOpenText, Globe, Pencil } from 'lucide-react'
 
-export default function LessonInfo({ lesson }: { lesson: string }) {
+export default function LessonInfo(lesson: string) {
   const lessonType = getLessonType(lesson)
 
   if (lessonType === 'нет') {
     return
   }
 
+  const lessonConfig = {
+    очно: {
+      icon: BookOpenText,
+      color: 'text-[#7f973e]',
+      showAuditorium: true,
+    },
+    лекция: {
+      icon: Pencil,
+      color: 'text-[#a94c4c]',
+      showAuditorium: true,
+    },
+    онлайн: {
+      icon: Globe,
+      color: 'text-[#3c5a9c]',
+      showAuditorium: false,
+    },
+  }
+
+  const config = lessonConfig[lessonType]
+  const Icon = config.icon
+
   return (
     <div className='flex gap-1'>
-      {lessonType === 'очно' ? (
-        <>
-          <BookOpenText className='h-[18px] w-[18px] text-[#7f973e]' />
-          <div>очно</div>
-          <div>{parseAuditoriums(lesson)}</div>
-        </>
-      ) : lessonType === 'лекция' ? (
-        <>
-          <Pencil className='h-[18px] w-[18px] text-[#a94c4c]' />
-          <div>лекция</div>
-          <div>{parseAuditoriums(lesson)}</div>
-        </>
-      ) : (
-        <>
-          <Globe className='h-[18px] w-[18px] text-[#3c5a9c]' />
-          <div>онлайн</div>
-        </>
-      )}
+      <Icon className={`h-[18px] w-[18px] ${config.color}`} />
+      <div>{lessonType}</div>
+      {config.showAuditorium && <div>{parseAuditoriums(lesson)}</div>}
     </div>
   )
 }
