@@ -1,11 +1,11 @@
 'use client'
 
-import { Input } from '@/components/ui/input'
-import { useItems } from '@/hooks/use-items'
-import { cn } from '@/lib/utils/tailwind-merge'
-import { useSelectedItemStore } from '@/stores/selected-item-store'
+import { useItems } from '@/hooks'
+import { cn } from '@/lib'
+import { useSelectedItemStore } from '@/stores'
 import { Search } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Input } from '@/components/ui/input'
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('')
@@ -22,9 +22,7 @@ export default function SearchBar() {
     }
 
     const filtered = items
-      .filter(item =>
-        item.name.toLowerCase().includes(inputValue.toLowerCase()),
-      )
+      .filter(item => item.name.toLowerCase().includes(inputValue.toLowerCase()))
       .slice(0, 15)
 
     setFilteredItems(filtered.map(item => item.name))
@@ -34,7 +32,7 @@ export default function SearchBar() {
     setInputValue('')
     setSelectedItem(item)
   }
-                
+
   return (
     <div className='relative mx-auto mb-4 w-full max-w-md'>
       <div className='relative'>

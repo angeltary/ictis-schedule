@@ -2,19 +2,15 @@
 
 import ScheduleDesktopView from '@/components/schedule/schedule-desktop-view'
 import ScheduleMobileView from '@/components/schedule/schedule-mobile-view'
-import { useSchedule } from '@/hooks/use-schedule'
-import { useWeeksStore } from '@/stores/weeks-store'
-import { useEffect, useState } from 'react'
+import { useSchedule } from '@/hooks'
+import { useWeeksStore } from '@/stores'
+import { useState, useEffect } from 'react'
 
 export default function ScheduleTable({ group }: { group: string }) {
   const { selectedWeek, setSelectedWeek, setWeeks } = useWeeksStore()
   const [expandedCards, setExpandedCards] = useState<number[]>([])
 
-  const {
-    data: schedule,
-    isLoading,
-    isError,
-  } = useSchedule(group, selectedWeek)
+  const { data: schedule, isLoading, isError } = useSchedule(group, selectedWeek)
 
   useEffect(() => {
     if (schedule) {

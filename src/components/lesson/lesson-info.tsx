@@ -1,5 +1,4 @@
-import { getLessonType } from '@/lib/utils/get-lesson-type'
-import { parseAuditoriums } from '@/lib/utils/parse-auditoriums'
+import { getLessonType, parseAuditoriums } from '@/lib'
 import { BookOpenText, Globe, Pencil } from 'lucide-react'
 
 interface Props {

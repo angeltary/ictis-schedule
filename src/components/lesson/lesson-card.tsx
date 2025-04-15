@@ -1,6 +1,5 @@
 import LessonInfo from '@/components/lesson/lesson-info'
-import { getLessonProgress } from '@/lib/utils/get-lesson-progress'
-import { isLessonToday } from '@/lib/utils/is-lesson-today'
+import { getLessonProgress, isLessonToday } from '@/lib'
 import { useEffect, useState } from 'react'
 
 interface Props {
@@ -15,8 +14,7 @@ export function LessonCard({ day, time, lesson }: Props) {
 
   useEffect(() => {
     const updateProgress = () => {
-      const { isCurrent: current, progress: lessonProgress } =
-        getLessonProgress(time)
+      const { isCurrent: current, progress: lessonProgress } = getLessonProgress(time)
 
       setIsCurrent(current)
       setProgress(lessonProgress)

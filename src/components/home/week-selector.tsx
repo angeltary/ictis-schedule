@@ -1,8 +1,8 @@
 'use client'
 
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { cn } from '@/lib/utils/tailwind-merge'
-import { useWeeksStore } from '@/stores/weeks-store'
+import { cn } from '@/lib'
+import { useWeeksStore } from '@/stores'
 
 export default function WeekSelector() {
   const { weeks, selectedWeek, setSelectedWeek } = useWeeksStore()

@@ -1,7 +1,6 @@
 'use client'
 
-import { useSelectedItemStore } from '@/stores/selected-item-store'
-import { useWeeksStore } from '@/stores/weeks-store'
+import { useSelectedItemStore, useWeeksStore } from "@/stores"
 
 export default function InfoCard() {
   const { selectedItem } = useSelectedItemStore()

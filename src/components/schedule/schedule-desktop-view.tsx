@@ -1,8 +1,7 @@
 'use client'
 
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
-import { getFormattedDate } from '@/lib/utils/get-formatted-date'
-import { cn } from '@/lib/utils/tailwind-merge'
+import { cn, getFormattedDate } from '@/lib'
 
 interface Props {
   headers: string[][]

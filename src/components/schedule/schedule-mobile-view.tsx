@@ -1,9 +1,7 @@
 'use client'
 
 import { LessonCard } from '@/components/lesson/lesson-card'
-import { getFormattedDate } from '@/lib/utils/get-formatted-date'
-import { isLessonToday } from '@/lib/utils/is-lesson-today'
-import { cn } from '@/lib/utils/tailwind-merge'
+import { cn, isLessonToday, getFormattedDate } from '@/lib'
 import { ChevronDown } from 'lucide-react'
 
 interface Props {

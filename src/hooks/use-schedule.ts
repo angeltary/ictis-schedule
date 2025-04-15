@@ -1,5 +1,5 @@
-import { getSchedule, getScheduleByWeek } from '@/api/schedule-api'
-import { Schedule } from '@/types/dto'
+import { getScheduleByWeek, getSchedule } from '@/api'
+import { Schedule } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 
 export const useSchedule = (group: string, week?: string) => {

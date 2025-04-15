@@ -1,8 +1,8 @@
 'use client'
 
 import ScheduleTable from '@/components/schedule/schedule-table'
-import { useItems } from '@/hooks/use-items'
-import { useSelectedItemStore } from '@/stores/selected-item-store'
+import { useItems } from '@/hooks'
+import { useSelectedItemStore } from '@/stores'
 import { useMemo } from 'react'
 
 export default function ScheduleWrapper() {
