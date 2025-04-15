@@ -7,7 +7,7 @@ interface Props {
 export default function YandexMetrika({ id }: Props) {
   return (
     <>
-      <Script id='yandex-metrika' strategy='afterInteractive'>
+      <Script type='text/javascript' id={`ym_${id}`}>
         {`
 		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();
