@@ -18,7 +18,7 @@ export default function ScheduleDesktopView({ headers, scheduleData }: Props) {
             <TableCell
               key={index}
               className={cn(
-                'hover:bg-muted/50 border text-center break-words transition-colors',
+                'border text-center break-words transition-colors',
                 index === 0 && 'font-bold',
               )}
             >
@@ -32,7 +32,7 @@ export default function ScheduleDesktopView({ headers, scheduleData }: Props) {
             <TableCell
               key={index}
               className={cn(
-                'hover:bg-muted/50 border text-center break-words transition-colors',
+                'border text-center break-words transition-colors',
                 index === 0 && 'font-bold',
               )}
             >
@@ -47,7 +47,7 @@ export default function ScheduleDesktopView({ headers, scheduleData }: Props) {
               <TableCell
                 key={index}
                 className={cn(
-                  'hover:bg-muted/50 border py-4 text-center break-words whitespace-normal transition-colors',
+                  'border py-4 text-center break-words whitespace-normal transition-colors',
                   index === 0 && 'font-bold',
                 )}
               >

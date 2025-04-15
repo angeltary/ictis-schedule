@@ -54,6 +54,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --color-progress-bar: var(--progress-bar);
+
+  --color-current-day: var(--current-day);
 }
 
 :root {
@@ -102,6 +104,8 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --progress-bar: oklch(0.96 0.003 16.02);
+
+  --current-day: oklch(0 0 0);
 }
 
 .dark {
@@ -148,6 +152,8 @@
   --sidebar-ring: oklch(0.556 0 0);
 
   --progress-bar: oklch(27.4% 0.006 286.033);
+
+  --current-day: oklch(0.23 0 0);
 }
 
 @layer base {

@@ -2,6 +2,7 @@
 
 import { LessonCard } from '@/components/lesson/lesson-card'
 import { getFormattedDate } from '@/lib/utils/get-formatted-date'
+import { isLessonToday } from '@/lib/utils/is-lesson-today'
 import { cn } from '@/lib/utils/tailwind-merge'
 import { ChevronDown } from 'lucide-react'
 
@@ -21,12 +22,13 @@ export default function ScheduleMobileView({
   return (
     <div className='flex flex-col gap-4 pb-2'>
       {scheduleData.map((item, index) => (
-        <div
-          key={index}
-          className='overflow-hidden rounded-lg shadow-sm border'
-        >
+        <div key={index} className='overflow-hidden rounded-lg shadow-sm border'>
           <div
-            className='bg-muted/50 dark:bg-muted/20 flex cursor-pointer items-center justify-between p-4'
+            className={cn(
+              'bg-muted/50 dark:bg-muted/20 flex cursor-pointer items-center justify-between p-4',
+              isLessonToday(getFormattedDate(item[0])) &&
+                'bg-gradient-to-r from-[#e7e7e7] dark:from-muted',
+            )}
             onClick={() => toggleCard(index)}
           >
             <div className='font-bold'>{getFormattedDate(item[0])}</div>
@@ -37,7 +39,6 @@ export default function ScheduleMobileView({
               )}
             />
           </div>
-
           {expandedCards.includes(index) && (
             <div className='space-y-3 p-4'>
               {item.slice(1).map((lessonData, lessonIndex) => (
