@@ -1,5 +1,5 @@
-import { instance } from './api-client'
-import { Schedule } from '@/types/dto'
+import { Schedule } from '@/types'
+import { instance } from './instance'
 
 export const getSchedule = async (group: string) => {
   return (await instance.get<Schedule>(`/?group=${group}`)).data

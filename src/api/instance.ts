@@ -1,4 +1,4 @@
-import { API_URL } from '@/constants/env'
+import { API_URL } from '@/constants'
 import axios from 'axios'
 
 export const instance = axios.create({

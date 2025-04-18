@@ -1,5 +1,5 @@
-import { instance } from './api-client'
-import { Items } from '@/types/dto'
+import { Items } from '@/types'
+import { instance } from './instance'
 
 export const getItems = async () => {
   const response = (await instance.get<Items>('/?query=.')).data
