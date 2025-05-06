@@ -16,6 +16,7 @@ export const getFormattedDate = (date: string) => {
 
   formattedDate = formattedDate.replace(/,(?!\s)/g, ', ')
   formattedDate = formattedDate.replace(/\s{2,}/g, ' ')
+  formattedDate = formattedDate.replace(/\b0+(\d+)/g, '$1')
 
   return formattedDate
 }
