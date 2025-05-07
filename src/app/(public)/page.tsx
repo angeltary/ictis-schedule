@@ -1,7 +1,7 @@
 import InfoCard from '@/components/home/info-card'
 import SearchBar from '@/components/home/search-bar'
 import WeekSelector from '@/components/home/week-selector'
-import ScheduleWrapper from '@/components/schedule/schedule-wrapper'
+import ScheduleTable from '@/components/schedule/schedule-table'
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       <SearchBar />
       <InfoCard />
       <WeekSelector />
-      <ScheduleWrapper />
+      <ScheduleTable />
     </>
   )
 }

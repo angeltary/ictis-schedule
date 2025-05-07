@@ -6,21 +6,25 @@ import { useItems, useSchedule } from '@/hooks'
 import { useSelectedItemStore, useWeeksStore } from '@/stores'
 import { useEffect, useMemo, useState } from 'react'
 
-export default function ScheduleWrapper() {
-  const { selectedWeek, setSelectedWeek, setWeeks } = useWeeksStore()
+export default function ScheduleTable() {
   const { selectedItem } = useSelectedItemStore()
-  const [expandedCards, setExpandedCards] = useState<number[]>([])
-
   const { data: items } = useItems()
 
   const group = useMemo(() => {
     if (selectedItem && items) {
-      return items.find(item => item.name === selectedItem)?.group ?? ''
+      return items.find(item => item.name === selectedItem)?.group
     }
-    return ''
+    return undefined
   }, [selectedItem, items])
 
-  const { data: schedule, isLoading, isError } = useSchedule(group, selectedWeek)
+  const { selectedWeek, setSelectedWeek, setWeeks } = useWeeksStore()
+  const [expandedCards, setExpandedCards] = useState<number[]>([])
+
+  const {
+    data: schedule,
+    isLoading,
+    isError,
+  } = useSchedule(group as string, selectedWeek, !!group)
 
   useEffect(() => {
     if (schedule) {
@@ -37,15 +41,11 @@ export default function ScheduleWrapper() {
   }
 
   if (!group) {
-    return null
+    return null // Or some placeholder/message
   }
 
-  if (isLoading) {
-    return <div className='p-2 text-center'>Загрузка расписания...</div>
-  }
-
-  if (isError || !schedule) {
-    return null
+  if (isError || isLoading || !schedule) {
+    return
   }
 
   const headers = schedule.table.table.slice(0, 2)

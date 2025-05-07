@@ -1,8 +1,8 @@
-import { getScheduleByWeek, getSchedule } from '@/api'
+import { getSchedule, getScheduleByWeek } from '@/api'
 import { Schedule } from '@/types'
 import { useQuery } from '@tanstack/react-query'
 
-export const useSchedule = (group: string, week?: string) => {
+export const useSchedule = (group: string, week?: string, enabled: boolean = true) => {
   return useQuery<Schedule>({
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
@@ -15,5 +15,6 @@ export const useSchedule = (group: string, week?: string) => {
       return getSchedule(group)
     },
     meta: { persist: true },
+    enabled,
   })
 }
