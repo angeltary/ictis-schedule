@@ -40,11 +40,7 @@ export default function ScheduleTable() {
     )
   }
 
-  if (!group) {
-    return null // Or some placeholder/message
-  }
-
-  if (isError || isLoading || !schedule) {
+  if (!group || isError || isLoading || !schedule) {
     return
   }
 
